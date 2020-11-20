@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "N+HEVLt4IRz0v3RmxTx7Ey5A/x4nuDZbh0iN3x3BovXGZQhCQmTX7pc3HnO/Etd/mPagB+1+eJKEcvQ5UTzC0A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Cristian\\source\\repos\\Dominio\\WebApi\\WebApi.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Cristian\\.nuget\\packages\\fsharp.core\\4.7.2\\fsharp.core.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

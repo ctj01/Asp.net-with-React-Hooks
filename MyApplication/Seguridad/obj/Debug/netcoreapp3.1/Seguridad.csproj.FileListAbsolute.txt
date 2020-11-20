@@ -1,0 +1,16 @@
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Seguridad.deps.json
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Seguridad.dll
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Seguridad.pdb
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Application.dll
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Dominio.dll
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Persistencia.dll
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Application.pdb
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Dominio.pdb
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\bin\Debug\netcoreapp3.1\Persistencia.pdb
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.csprojAssemblyReference.cache
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.AssemblyInfoInputs.cache
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.AssemblyInfo.cs
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.csproj.CopyComplete
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.dll
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.pdb
+C:\Users\Cristian\source\repos\MyApplication\Seguridad\obj\Debug\netcoreapp3.1\Seguridad.csproj.CoreCompileInputs.cache
