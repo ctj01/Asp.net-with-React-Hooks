@@ -1,9 +1,12 @@
 ﻿using Application.ManejadorErr;
+using AutoMapper;
+using Dominio.Entidades;
 using FluentValidation;
 using MediatR;
 using Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -15,16 +18,21 @@ namespace Application.CursoRequest
     {
         public class Ejecutar : IRequest 
         {
-            public int Cursoid { get; set; }
+            public Guid Cursoid { get; set; }
             public string Titulo { get; set; }
             public string Descripcion { get; set; }
             public DateTime ? Fechadepublicacion { get; set;}
-            public Ejecutar(int cursoid, string titulo, string descripcion, DateTime fechapublicacion)
+            public decimal ? PrecioActual { get; set; }
+            public decimal ? Promocion { get; set; }
+            public List<Guid> InstructorLista { get; set; }
+            public Ejecutar(Guid cursoid, string titulo, string descripcion, DateTime fechapublicacion, decimal PrecioActual, decimal Promocion)
             {
                 this.Cursoid = cursoid;
                 this.Titulo = titulo;
                 this.Descripcion = descripcion;
                 this.Fechadepublicacion = fechapublicacion;
+                this.PrecioActual = PrecioActual;
+                this.Promocion = Promocion;
             }
             public Ejecutar()
             {
@@ -44,9 +52,11 @@ namespace Application.CursoRequest
         public class Manejador : IRequestHandler<Ejecutar>
         {
             private readonly ContextoCurso Context;
-            public Manejador(ContextoCurso context)
+            private IMapper mapper;
+            public Manejador(ContextoCurso context, IMapper mapper)
             {
                 this.Context = context;
+                this.mapper = mapper;
             }
             public async Task<Unit> Handle(Ejecutar request, CancellationToken cancellationToken)
             {
@@ -58,6 +68,47 @@ namespace Application.CursoRequest
                 Cursos.Titulo = request.Titulo ?? Cursos.Titulo;
                 Cursos.Descripcion = request.Descripcion ?? Cursos.Descripcion;
                 Cursos.Fechadepublicacion = request.Fechadepublicacion ?? Cursos.Fechadepublicacion;
+
+                var Precioentidad = Context.TPrecio.Where(x => x.Cursoid == request.Cursoid).FirstOrDefault();
+
+                if (Precioentidad != null)
+                {
+                    Precioentidad.PrecioActual = request.PrecioActual ?? Precioentidad.PrecioActual;
+                    Precioentidad.Promocion = request.Promocion ?? Precioentidad.Promocion;
+                }
+                else 
+                {
+                    var nuevoprecio = new Precio
+                    {
+                        Precioid = Guid.NewGuid(),
+                        PrecioActual = request.PrecioActual ?? 0,
+                        Promocion = request.Promocion ?? 0,
+                        Cursoid = request.Cursoid
+                        
+                        
+                    };
+                    await Context.TPrecio.AddAsync(nuevoprecio);
+                }
+
+
+                if (request.InstructorLista != null)
+                {
+                    var InstructoresDb = Context.InstructorCurso.Where(x => x.Cursoid == request.Cursoid);
+                    foreach (var Idb in InstructoresDb)
+                    {
+                        Context.InstructorCurso.Remove(Idb);
+                    }
+                    foreach (var id in request.InstructorLista)
+                    {
+                        var nuevo = new InstructorCurso
+                        {
+                            Cursoid = request.Cursoid,
+                            Instructorid = id
+
+                        };
+                        Context.InstructorCurso.Add(nuevo);
+                    }
+                }
                 var Result = await Context.SaveChangesAsync();
                 if (Result < 0 )
                 {

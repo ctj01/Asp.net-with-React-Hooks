@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Contratos;
 using Application.CursoRequest;
 using Application.Seguridad;
+using AutoMapper;
 using Dominio.Entidades;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -70,6 +71,7 @@ namespace WebApiRest
                ValidateIssuer = false
            });
             services.AddScoped<IUsuarioSesion, UsuarioSesion>();
+            services.AddAutoMapper(typeof(Consulta.Manejador));
 
 
 

@@ -3,6 +3,7 @@ using MediatR;
 using Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
@@ -14,7 +15,7 @@ namespace Application.CursoRequest
     {
         public class Ejecutar : IRequest
         {
-            public int Cursoid { get; set; }
+            public Guid Cursoid { get; set; }
         }
         public class Manejador : IRequestHandler<Ejecutar>
         {
@@ -26,6 +27,26 @@ namespace Application.CursoRequest
 
             public async Task<Unit> Handle(Ejecutar request, CancellationToken cancellationToken)
             {
+                var CursosDB = Context.InstructorCurso.Where(x => x.Cursoid == request.Cursoid);
+
+                foreach (var curso in CursosDB)
+                {
+                    Context.InstructorCurso.Remove(curso);
+                }
+                var comentarios = Context.TComentario.Where(x => x.Cursoid == request.Cursoid);
+                if (comentarios != null)
+                {
+                    foreach (var id in comentarios)
+                    {
+                        Context.TComentario.Remove(id);
+                    }
+                }
+                var precio = Context.TPrecio.Where(x => x.Cursoid == request.Cursoid).FirstOrDefault();
+                if (precio != null)
+                {
+                    Context.TPrecio.Remove(precio);
+                }
+                
                 var cursos = await Context.TCurso.FindAsync(request.Cursoid);
                 if (cursos == null)
                 {

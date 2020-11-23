@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.CursoRequest;
+using Application.DTO;
 using Dominio.Entidades;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,19 +17,19 @@ namespace WebApiRest.Controllers
     public class CursoController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Curso>>> GetAll()
+        public async Task<ActionResult<List<CursoDto>>> GetAll()
         {
             return await Mediador.Send(new Consulta.ListaCurso());
         }
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Curso>> GetForId(int Id)
+        [HttpGet("{Cursoid}")]
+        public async Task<ActionResult<CursoDto>> GetForId(Guid CursoId)
         {
-            return await Mediador.Send(new ConsultaId.CursoUnico(id:Id)) ;
+            return await Mediador.Send(new ConsultaId.CursoUnico(Cursoid:CursoId)) ;
         }
         [HttpPost("{titulo}/{descripcion}/{fechadepublicacion}")]
-        public async Task<ActionResult<Unit>> Insertar(string titulo, string descripcion, DateTime fechaDePublicacion)
+        public async Task<ActionResult<Unit>> Insertar(string titulo, string descripcion, DateTime fechaDePublicacion, decimal PrecioActual, decimal Promocion)
         {   
-            return await Mediador.Send(new NuevoCurso.Ejecutar(Titulo: titulo, Descripcion:descripcion, FechaDePublicacion:fechaDePublicacion));
+            return await Mediador.Send(new NuevoCurso.Ejecutar(Titulo: titulo, Descripcion:descripcion, FechaDePublicacion:fechaDePublicacion, Precioactual:PrecioActual, Promocion: Promocion));
         }
         [HttpPost]
         public async Task<ActionResult<Unit>> Insertar(NuevoCurso.Ejecutar data)
@@ -36,20 +37,20 @@ namespace WebApiRest.Controllers
             return await Mediador.Send(data);
         }
         [HttpPut]
-        public async Task<ActionResult<Unit>> Modificar(int id, string titulo, string descripcion, DateTime fechaDePublicacion)
+        public async Task<ActionResult<Unit>> Modificar(Guid Cursoid, string titulo, string descripcion, DateTime fechaDePublicacion, decimal PrecioActual, decimal Promocion)
         {
-            return await Mediador.Send(new EditarCurso.Ejecutar(cursoid: id, titulo: titulo, descripcion: descripcion, fechapublicacion: fechaDePublicacion));
+            return await Mediador.Send(new EditarCurso.Ejecutar(cursoid: Cursoid, titulo: titulo, descripcion: descripcion, fechapublicacion: fechaDePublicacion, PrecioActual: PrecioActual, Promocion: Promocion));
         }
-        [HttpPut("{id}")]
-        public async Task<ActionResult<Unit>> Modificar(int id, EditarCurso.Ejecutar data)
+        [HttpPut("{Cursoid}")]
+        public async Task<ActionResult<Unit>> Modificar(Guid Cursoid, EditarCurso.Ejecutar data)
         {
-            data.Cursoid = id;
+            data.Cursoid = Cursoid;
             return await Mediador.Send(data);
         }
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Unit>> Eliminar(int id)
+        [HttpDelete("{Cursoid}")]
+        public async Task<ActionResult<Unit>> Eliminar(Guid Cursoid)
         {
-            return await Mediador.Send(new EliminarCurso.Ejecutar { Cursoid = id });
+            return await Mediador.Send(new EliminarCurso.Ejecutar { Cursoid = Cursoid });
         }
 
     }

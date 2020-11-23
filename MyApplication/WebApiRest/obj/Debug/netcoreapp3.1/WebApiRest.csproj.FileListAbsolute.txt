@@ -82,7 +82,6 @@ C:\Users\Cristian\source\repos\MyApplication\WebApiRest\obj\Debug\netcoreapp3.1\
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\obj\Debug\netcoreapp3.1\WebApiRest.pdb
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\WebApiRest.exe
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\WebApiRest.deps.json
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\WebApiRest.runtimeconfig.json
@@ -157,3 +156,6 @@ C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\obj\Debug\netcoreapp3.1\WebApiRest.csproj.CoreCompileInputs.cache
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\obj\Debug\netcoreapp3.1\WebApiRest.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Cristian\source\repos\MyApplication\WebApiRest\obj\Debug\netcoreapp3.1\WebApiRest.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\Cristian\source\repos\MyApplication\WebApiRest\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Cristian\source\repos\MyApplication\WebApiRest\obj\Debug\netcoreapp3.1\scopedcss\bundle\WebApiRest.styles.css

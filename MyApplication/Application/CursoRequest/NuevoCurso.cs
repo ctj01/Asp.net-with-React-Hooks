@@ -17,12 +17,16 @@ namespace Application.CursoRequest
             public string Titulo { get; set; }
             public string Descripcion { get; set; }
             public DateTime Fechadepublicacion { get; set; }
+            public decimal PrecioActual { get; set; }
+            public decimal Promocion { get; set; }
             public List<Guid> ListaInstructor { get; set; }
-            public Ejecutar(string Titulo, string Descripcion, DateTime FechaDePublicacion)
+            public Ejecutar(string Titulo, string Descripcion, DateTime FechaDePublicacion, decimal Precioactual, decimal Promocion)
             {
                 this.Titulo = Titulo;
                 this.Descripcion = Descripcion;
                 this.Fechadepublicacion = FechaDePublicacion;
+                this.Promocion = Promocion;
+                this.PrecioActual = Precioactual;
             }
             public Ejecutar() { }
         }
@@ -65,9 +69,15 @@ namespace Application.CursoRequest
                         Context.InstructorCurso.Add(cursoInstructor);
                     }
                 }
+                var precioentidad = new Precio
                 {
+                    Cursoid = _Cursoid,
+                    PrecioActual = request.PrecioActual,
+                    Promocion = request.Promocion,
+                    Precioid = Guid.NewGuid()
 
-                }
+                };
+                Context.TPrecio.Add(precioentidad);
                 var valor = await Context.SaveChangesAsync();
                 if (valor > 0)
                 {
