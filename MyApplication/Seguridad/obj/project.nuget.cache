@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "QJo/KCeDrx59reICt5cWXXBNiP3QfWXahQp2ZALHaZ7uSgmryoRAHxrFD3jX2bDb3A5sGrIv02PkpyI+eWv7gg==",
+  "dgSpecHash": "xcQqWFMfEk017ykiFCcT+Hl5EjiEuiI9f85UiFhlu25ZRy89pzPSMbS2Z4P/6wRupI2U0Gyh6wQvLDFuTwOgaw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cristian\\source\\repos\\MyApplication\\Seguridad\\Seguridad.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cristian\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\Cristian\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.3.0\\fluentvalidation.aspnetcore.9.3.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.3.0\\fluentvalidation.dependencyinjectionextensions.9.3.0.nupkg.sha512",
@@ -77,7 +78,7 @@
     "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
-    "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Cristian\\.nuget\\packages\\system.reflection.typeextensions\\4.3.0\\system.reflection.typeextensions.4.3.0.nupkg.sha512",

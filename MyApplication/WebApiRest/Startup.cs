@@ -28,6 +28,8 @@ using Microsoft.Extensions.Internal;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Persistencia;
+using Persistencia.Dapper;
+using Persistencia.InstructorModelos;
 using Seguridad.TokenSeguridad;
 using WebApiRest.MiddleWare;
 using ISystemClock = Microsoft.AspNetCore.Authentication.ISystemClock;
@@ -49,12 +51,15 @@ namespace WebApiRest
         {
 
             services.AddDbContext<ContextoCurso>(options => options.UseSqlServer(Configuration.GetConnectionString("CursoConection")));
+            services.AddOptions();
+            services.Configure<DbConectionConfig>(Configuration.GetSection("ConnectionStrings"));
             services.AddMediatR(typeof(Consulta.Manejador).Assembly);
             services.AddControllers(opt => {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 opt.Filters.Add(new AuthorizeFilter(policy));
                 })
                 .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<NuevoCurso>());
+
             var builder = services.AddIdentityCore<Usuario>();
             var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
             identityBuilder.AddEntityFrameworkStores<ContextoCurso>();
@@ -72,6 +77,9 @@ namespace WebApiRest
            });
             services.AddScoped<IUsuarioSesion, UsuarioSesion>();
             services.AddAutoMapper(typeof(Consulta.Manejador));
+            services.AddTransient<IFactoryConection, FactoryConnection>();
+            services.AddScoped<IInstructor<InstructoModel>, InstructorRepository>();
+            
 
 
 
