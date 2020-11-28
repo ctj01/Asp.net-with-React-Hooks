@@ -9,6 +9,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Persistencia.Paginacion;
 
 namespace WebApiRest.Controllers
 {
@@ -24,12 +25,12 @@ namespace WebApiRest.Controllers
         [HttpGet("{Cursoid}")]
         public async Task<ActionResult<CursoDto>> GetForId(Guid CursoId)
         {
-            return await Mediador.Send(new ConsultaId.CursoUnico(Cursoid:CursoId)) ;
+            return await Mediador.Send(new ConsultaId.CursoUnico(Cursoid: CursoId));
         }
         [HttpPost("{titulo}/{descripcion}/{fechadepublicacion}")]
         public async Task<ActionResult<Unit>> Insertar(string titulo, string descripcion, DateTime fechaDePublicacion, decimal PrecioActual, decimal Promocion)
-        {   
-            return await Mediador.Send(new NuevoCurso.Ejecutar(Titulo: titulo, Descripcion:descripcion, FechaDePublicacion:fechaDePublicacion, Precioactual:PrecioActual, Promocion: Promocion));
+        {
+            return await Mediador.Send(new NuevoCurso.Ejecutar(Titulo: titulo, Descripcion: descripcion, FechaDePublicacion: fechaDePublicacion, Precioactual: PrecioActual, Promocion: Promocion));
         }
         [HttpPost]
         public async Task<ActionResult<Unit>> Insertar(NuevoCurso.Ejecutar data)
@@ -52,6 +53,10 @@ namespace WebApiRest.Controllers
         {
             return await Mediador.Send(new EliminarCurso.Ejecutar { Cursoid = Cursoid });
         }
-
+        [HttpPost("{report}")]
+        public async Task<ActionResult<PaginacionModel>> Report(PaginacionCursoO.ejecuta Data)
+        {
+            return await Mediador.Send(Data);
+        }
     }
 }

@@ -68,6 +68,7 @@ namespace Application.CursoRequest
                 Cursos.Titulo = request.Titulo ?? Cursos.Titulo;
                 Cursos.Descripcion = request.Descripcion ?? Cursos.Descripcion;
                 Cursos.Fechadepublicacion = request.Fechadepublicacion ?? Cursos.Fechadepublicacion;
+                Cursos.FechaCreacion = DateTime.UtcNow;
 
                 var Precioentidad = Context.TPrecio.Where(x => x.Cursoid == request.Cursoid).FirstOrDefault();
 

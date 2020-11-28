@@ -1,5 +1,6 @@
 ﻿using Application.InstructorRequest;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistencia.InstructorModelos;
 using System;
@@ -13,6 +14,7 @@ namespace WebApiRest.Controllers
 {
     public class InstructorController:BaseController
     {
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<List<InstructoModel>>> ListaInstructores()
         {

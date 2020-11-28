@@ -14,5 +14,6 @@ namespace Dominio.Entidades
         public string ComentarioTexto { get; set; }
         public Guid Cursoid { get; set; }
         public Curso Tcurso { get; set; }
+        public DateTime? FechaCreacion { get; set; }
     }
 }

@@ -44,7 +44,9 @@ namespace Application.ComentariosRequest
                     Alumno = request.Alumno,
                     Puntaje = request.Puntaje,
                     ComentarioTexto = request.ComentarioTexto,
-                    Cursoid = request.Cursoid
+                    Cursoid = request.Cursoid,
+                    FechaCreacion = DateTime.UtcNow
+                    
                     
                 };
                 await contexto.TComentario.AddAsync(Nuevocomentario);

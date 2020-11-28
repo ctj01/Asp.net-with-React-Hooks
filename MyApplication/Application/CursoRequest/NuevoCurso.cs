@@ -54,7 +54,9 @@ namespace Application.CursoRequest
                     Cursoid = _Cursoid,
                     Titulo = request.Titulo,
                     Descripcion = request.Descripcion,
-                    Fechadepublicacion = request.Fechadepublicacion
+                    Fechadepublicacion = request.Fechadepublicacion,
+                    FechaCreacion = DateTime.UtcNow
+                    
                 };
                 Context.TCurso.Add(cursos);
                 if (request.ListaInstructor != null)

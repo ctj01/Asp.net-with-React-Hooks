@@ -27,5 +27,10 @@ namespace WebApiRest.Controllers
         {
             return await Mediador.Send(new UsuarioActual.Ejecutar());
         }
+        [HttpPut]
+        public async Task<ActionResult<UsuarioData>> login(ActualizarUsuario.Ejecuta data)
+        {
+            return await Mediador.Send(data);
+        }
     }
 }

@@ -27,12 +27,13 @@ namespace Application.Seguridad
             public async Task<UsuarioData> Handle(Ejecutar request, CancellationToken cancellationToken)
             {
                 var usuario = await user.FindByNameAsync(UsuarioSesion.ObtenerUsuarioSesion());
+                var listRoles = await user.GetRolesAsync(usuario);
                 return new UsuarioData
                 {
                     UserName = usuario.UserName,
                     Email = usuario.Email,
                     NombreCompleto = usuario.NombreCompleto,
-                    Token = jwtGenerator.CrearToken(usuario),
+                    Token = jwtGenerator.CrearToken(usuario, new List<string>(listRoles)),
                     Imagen = null
                 };
             }

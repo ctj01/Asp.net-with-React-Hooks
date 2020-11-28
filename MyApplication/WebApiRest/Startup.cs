@@ -30,6 +30,7 @@ using Microsoft.IdentityModel.Tokens;
 using Persistencia;
 using Persistencia.Dapper;
 using Persistencia.InstructorModelos;
+using Persistencia.Paginacion;
 using Seguridad.TokenSeguridad;
 using WebApiRest.MiddleWare;
 using ISystemClock = Microsoft.AspNetCore.Authentication.ISystemClock;
@@ -62,6 +63,8 @@ namespace WebApiRest
 
             var builder = services.AddIdentityCore<Usuario>();
             var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+            identityBuilder.AddRoles<IdentityRole>();
+            identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<Usuario, IdentityRole>>();
             identityBuilder.AddEntityFrameworkStores<ContextoCurso>();
             identityBuilder.AddSignInManager<SignInManager<Usuario>>();
             services.TryAddSingleton<ISystemClock, SystemClock>();
@@ -79,7 +82,17 @@ namespace WebApiRest
             services.AddAutoMapper(typeof(Consulta.Manejador));
             services.AddTransient<IFactoryConection, FactoryConnection>();
             services.AddScoped<IInstructor<InstructoModel>, InstructorRepository>();
-            
+            services.AddSwaggerGen(a =>
+            {
+                a.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Servicios para mantenimiento de cursos",
+                    Version = "v1"
+                });
+
+                a.CustomSchemaIds(c => c.FullName);
+            });
+            services.AddScoped<IPaginacion, PaginacionRespository>();
 
 
 
@@ -103,6 +116,11 @@ namespace WebApiRest
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.UseSwagger();
+            app.UseSwaggerUI( c => {
+
+                c.SwaggerEndpoint("/swagger/v1/swagger.json","Cursos online v1");
             });
         }
     }

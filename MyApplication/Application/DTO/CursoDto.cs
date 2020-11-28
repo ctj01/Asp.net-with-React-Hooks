@@ -11,6 +11,7 @@ namespace Application.DTO
         public string Descripcion { get; set; }
         public DateTime Fechadepublicacion { get; set; }
         public byte[] Fotodeportada { get; set; }
+        public DateTime? FechaCreacion { get; set; }
         public ICollection<InstructorDto> Instructor { get; set; }
         public ICollection<ComentarioDto> Comentarios { get; set; }
         public PrecioDto Precio { get; set; }

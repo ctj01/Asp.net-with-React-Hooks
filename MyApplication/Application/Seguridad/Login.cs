@@ -49,13 +49,16 @@ namespace Application.Seguridad
                 }
 
                 var result = await signInManager.CheckPasswordSignInAsync(usuario, request.Password, false);
+
+                var listRoles =  await userManager.GetRolesAsync(usuario);
+
                 if (result.Succeeded)
                 {
                     return (new UsuarioData { 
                     NombreCompleto = usuario.NombreCompleto,
                     Email = usuario.Email,
                     UserName = usuario.UserName,
-                    Token = Generador.CrearToken(usuario),
+                    Token = Generador.CrearToken(usuario, new List<string>(listRoles)),
                     Imagen = null  
                     });
                 }

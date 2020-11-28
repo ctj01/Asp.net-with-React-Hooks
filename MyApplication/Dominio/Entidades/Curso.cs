@@ -13,6 +13,7 @@ namespace Dominio.Entidades
         public string Descripcion { get; set; }
         public DateTime Fechadepublicacion { get; set; }
         public byte[] Fotodeportada { get; set; }
+        public DateTime? FechaCreacion { get; set; }
         public Precio Tprecio { get; set; }
         public ICollection<Comentario> Comentarios { get; set; }
         public ICollection<InstructorCurso> TinstructorCursos { get; set; }
